@@ -1,0 +1,15 @@
+services:
+  project-db:
+    image: postgres:16-alpine
+    container_name: project-postger-db
+    ports:
+      - "${PROJECT_DB_PORT}:5432"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${PROJECT_DB_NAME}
+    volumes:
+      - project_db_data:/var/lib/postgresql/data
+
+volumes:
+  project_db_data:
